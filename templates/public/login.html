@@ -1,0 +1,38 @@
+{% extends 'partials/customer/base.html' %}
+{% block customer-template %}
+<section class="static about-sec">
+    <div class="container">
+        <h1>Login</h1>
+        <p>Login Here to continue buying books!</p>
+        <div class="form">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row wow fadeInLeft" style="visibility: visible; animation-name: fadeInRight; animation-iteration-count: 1;">
+                    <div class="col-md-10">
+                        <div class="col-md-6">
+                            <label for="phone_number">Phone Number:<sup style="color: red; font-weight:500; font-size:medium;">*</sup></label>
+                            <input id="phone_number" name="phone_number" placeholder="Enter Phone number" required>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="col-md-6">
+                            <label for="password">Password:<sup style="color: red; font-weight:500; font-size:medium;">*</sup></label>
+                            <input id="password" name="password" type="password" placeholder="Enter Password" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <button class="btn black">Login</button>
+                        <h5>not Registered? <a href="register.html">Register here</a></h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    $( document ).ready(function() {
+        new WOW().init();
+      });
+    
+</script>
+{% endblock customer-template %}
