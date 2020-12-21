@@ -1,0 +1,67 @@
+{% extends 'partials/admin/admin_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block load-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/extra-libs/multicheck/multicheck.css' %}">
+{% endblock load-css %}
+{% block container-fluid %}
+<div class="row" data-select2-id="16">
+    <div class="col-md-12" data-select2-id="15">
+        <div class="card">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                <div class="card-body">
+                    <h4 class="card-title">Add/Edit Publications</h4>
+                    <div class="form-group row">
+                        <label for="pub_name" class="col-sm-3 text-right control-label col-form-label">Publication Name:</label>
+                        <div class="col-md-4">{{ form.publisher|as_crispy_field }}</div>
+                    </div>
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title m-b-0"></h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    Sr.
+                                </th>
+                                <th>Publisher Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="customtable">
+                            {% for pub in pubs %}
+                                <tr>
+                                    <td>
+                                        {{ forloop.counter }}
+                                    </td>
+                                    <td>{{ pub.publisher }}</td>
+                                    <td><a role="button" href="{% url 'admin_app:edit_pub' pub.id %}" class="btn btn-cyan btn-sm m-1"><i class="fas fa-edit"></i> Edit</a><a role="button" href="{% url 'admin_app:publisher_delete' pub.id %}" class="btn btn-danger btn-sm m-1" style="color:white;"><i class="fas fa-trash-alt"></i> Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block load-js %}
+    <script src="{% static 'assets/extra-libs/DataTables/datatables.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/multicheck/jquery.multicheck.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $("table").DataTable();
+        });
+    </script>
+{% endblock load-js %}
+{% endblock container-fluid %}

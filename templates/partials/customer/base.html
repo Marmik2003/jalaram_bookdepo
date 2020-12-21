@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'base/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
+    {% block load-css %}
+
+    {% endblock load-css %}
     <script src="{% static 'base/js/jquery.min.js' %}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
 </head>
@@ -91,6 +94,9 @@
     <script src="{% static 'base/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'base/js/custom.js' %}"></script>
+    {% block load-js %}
+
+    {% endblock load-js %}
 </body>
 
 </html>

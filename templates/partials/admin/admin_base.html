@@ -9,18 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
-    <title>base</title>
+    <title>Jalaram Admin</title>
     <!-- Custom CSS -->
     <link href="{% static 'assets/libs/flot/css/float-chart.css' %}" rel="stylesheet">
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
     <!-- Custom CSS -->
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="{% static 'assets/libs/toastr/build/toastr.min.css' %}" rel="stylesheet">
+    {% block load-css %}
+
+    {% endblock load-css %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
 <![endif]-->
 </head>
 
@@ -54,12 +60,12 @@
                         <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{% static 'assets/images/logo-icon-mini.png' %}" alt="homepage" class="light-logo" />
-                           
+                            <!-- <img src="{% static 'assets/images/logo-icon-mini.png' %}" alt="homepage" class="light-logo" /> -->
+                            <i class="mdi mdi-book" style="color: orange; font-size:xx-large; margin-top:8px;"></i>
                         </b>
                         <!--End Logo icon -->
                          <!-- Logo text -->
-                        <span class="logo-text" style="font-family: 'Montserrat', sans-serif; margin-top:5px; color:#f7ddb5">
+                        <span class="logo-text" style="font-family: 'Montserrat', sans-serif; color:#f7ddb5">
                              <!-- dark Logo text -->
                             Jalaram Admin
                             
@@ -120,16 +126,7 @@
         <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
+            {% include 'partials/admin/_sidebar.html' %}
             <!-- End Sidebar scroll-->
         </aside>
         <!-- ============================================================== -->
@@ -158,74 +155,11 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
-                                <h6 class="text-white">Dashboard</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-4 col-xlg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
-                                <h6 class="text-white">Charts</h6>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
-                                <h6 class="text-white">Widgets</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
-                                <h6 class="text-white">Tables</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-info text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-arrow-all"></i></h1>
-                                <h6 class="text-white">Full Width</h6>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Column -->
-                </div>
+                {% block container-fluid %}
+                {% endblock container-fluid %}
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-6">
-                        
-                    </div>
-                    <!-- column -->
-
-                    <div class="col-lg-6">
-                        
-                    </div>
-                </div>
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
@@ -253,7 +187,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
     <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
@@ -276,7 +210,25 @@
     <script src="{% static 'assets/libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static 'assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
     <script src="{% static 'dist/js/pages/chart/chart-page-init.js' %}"></script>
+    <script src="{% static 'assets/libs/toastr/build/toastr.min.js' %}"></script>
+    {% block load-js %}
 
+    {% endblock load-js %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                {% if message.tags == 'danger' %}
+                    toastr.error('Error','{{ message }}');
+                {% elif message.tags == 'success' %}
+                    toastr.success('Success','{{ message }}');
+                {% elif message.tags == 'warning' %}
+                    toastr.warning('Warning','{{ message }}');
+                {% elif message.tags == 'info' %}
+                    toastr.info('Information','{{ message }}');
+                {% endif %}
+            </script>
+        {% endfor %}
+    {% endif %}
 </body>
 
 </html>
