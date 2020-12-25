@@ -108,7 +108,7 @@
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="{% url 'public:logout' %}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -142,14 +142,8 @@
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">{% block page-title %} {% endblock page-title %}</h4>
                         <div class="ml-auto text-right">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"></li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>

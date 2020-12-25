@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -32,3 +33,8 @@ def public_login(request):
         else:
             messages.error(request, 'Invalid Phone Number (Must be 10 digit)!')
             return redirect('public:login')
+
+def logout_view(request):
+    request.session.flush()
+    logout(request)
+    return HttpResponseRedirect('/')
